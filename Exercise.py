@@ -135,55 +135,59 @@ else:
 
 
 #Exercise 4.4
-secret = 7
+import random
+
+secret = random.randint(1, 10)
 guess = 0
+
 while guess != secret:
-    guess = int(input("Guess the number between (1-10): "))
+    guess = int(input("Guess a number between 1 and 10: "))
     if guess < secret:
-        print("Too low")
+        print("Too low!")
     elif guess > secret:
-        print("Too high")
+        print("Too high!")
     else:
         print("Correct!")
 
 
+
 #Exercise 4.5
-correct_user = "python"
-correct_pass = "rules"
+correct_username = "python"
+correct_password = "rules"
 attempts = 0
-username = ""
-password = ""
 
 while attempts < 5:
-    username = input("Enter Username: ")
-    password = input("Enter Password: ")
-
-    if username == correct_user and password == correct_pass:
-        print("Welcome")
-        attempts = 5
+    username = input("Username: ")
+    password = input("Password: ")
+    if username == correct_username and password == correct_password:
+        print("Welcome!")
+        break
     else:
-        print("You have entered wrong credentials")
-        attempts = attempts + 1
+        print("Incorrect username or password.")
+        attempts += 1
 
-if username != correct_user or password != correct_pass:
-    print("Access denied")
+if attempts == 5:
+    print("Access denied.")
+
 
 
 #Exercise 4.6
-Point = int(input("Enter how many points to generate: "))
-circle = 0
+import random
+
+points_inside_circle = 0
+total_points = int(input("How many random points to generate? "))
+
 count = 0
+while count < total_points:
+    x = random.uniform(-1, 1)
+    y = random.uniform(-1, 1)
+    if x**2 + y**2 < 1:
+        points_inside_circle += 1
+    count += 1
 
-while count < Point:
-    x = (count % 100) / 50 - 1
-    y = ((count * 3) % 100) / 50 - 1
-
-    if x*x + y*y < 1:
-        circle = circle + 1
-    count = count + 1
-
-pi_approx = 4 * circle / Point
+pi_approx = 4 * points_inside_circle / total_points
 print("Approximation of pi:", pi_approx)
+
 
 
 
